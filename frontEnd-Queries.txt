@@ -1,0 +1,72 @@
+1. Query : 
+    query getOnePerson($id: Int!){
+        person(id:$id) {
+        id
+        firstName
+    }
+    }
+
+
+    QueryVariable 
+    {
+        "id":2
+    }
+
+    ------------***-------------
+    2. query getSomePerson($id1:Int!, $id2: Int!){
+    person1: person(id: $id1){
+    ...PersonDetails
+    },
+    person2:person(id:$id2) {
+        ...PersonDetails
+    }
+    }
+
+    fragment PersonDetails on Person {
+        id
+        firstName,  
+        mail
+    }
+
+    QueryVariable 
+    {
+    "id1": 2,
+    "id2": 5
+    }
+    ------------***-------------
+
+3. mutation updateOperation($id: Int!, $firstName :String, $lastName:String,
+    $address:String, $mail:String, $phone:Int){
+        updateOnePerson(id:$id, firstName:$firstName,lastName:$lastName,
+        address:$address, mail:$mail, phone:$phone){
+        ...PersonDetails
+        }
+    }
+    # query getSomePerson($id1:Int!, $id2: Int!){
+    #   person1: person(id: $id1){
+    #    ...PersonDetails
+    #   },
+    #   person2:person(id:$id2) {
+    #     ...PersonDetails
+    #   }
+    # }
+
+    fragment PersonDetails on Person {
+        id
+        firstName
+        lastName
+        address
+        mail
+        phone
+    }
+
+  QueryVariable 
+    {
+     "id":4,
+    "firstName":"Mad",
+  	"lastName":"",
+  	"address":"",
+    "mail":""
+    }
+
+   ------------***-------------
